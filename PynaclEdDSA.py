@@ -29,4 +29,8 @@ print(verify_key)
 # The message and the signature can either be passed together, or
 # separately if the signature is decoded to raw bytes.
 # These are equivalent:
-verify_key.verify(signed)
+try:
+    verify_key.verify(signed)
+
+except:
+    print("Signature was forged or corrupt")

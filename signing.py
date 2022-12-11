@@ -4,7 +4,9 @@ from nacl.signing import SigningKey
 
 # Generate a new random signing key                                 PRIVATE KEY
 signing_key = SigningKey.generate()
-
+with open("signing_key.bin", "wb") as f:
+    signing_key.save(f)
+    
 # Sign a message with the signing key                               SIGNATURE
 signed = signing_key.sign(b"Attack at Dawn")
 print("SIGNATURE")
