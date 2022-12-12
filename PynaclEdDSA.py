@@ -30,7 +30,7 @@ print(verify_key)
 # separately if the signature is decoded to raw bytes.
 # These are equivalent:
 try:
-    verify_key.verify(signed)
-
+        verify_key.verify(signed)
+        print("Signature is valid.")
 except:
-    print("Signature was forged or corrupt")
+        print("Signature was forged or corrupt")
