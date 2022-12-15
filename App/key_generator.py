@@ -24,9 +24,13 @@ class KeyGenerator:
         # Convert the byte array to a binary object
         self.public_key_binary = bson.binary.Binary(self.public_key_bytes) 
 
+    def get_keys(self):
+        return self.private_key_binary, self.public_key_binary
+
+# Testing        
 # Create a new KeyGenerator object
 key_generator = KeyGenerator()
 
 # Get the generated private and public keys
-private_key = key_generator.private_key_binary
-public_key = key_generator.public_key_binary
+private_key, public_key = key_generator.get_keys()
+print(private_key, public_key)

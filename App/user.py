@@ -12,8 +12,7 @@ class User:
         key_generator = KeyGenerator()
 
         # Get the generated private and public keys
-        self.private_key    = key_generator.private_key_binary
-        self.public_key     = key_generator.public_key_binary
+        self.private_key, self.public_key   = key_generator.get_keys()
     
     def sign_up(self):
        # Hash the password
@@ -82,8 +81,9 @@ class User:
 
 
 # Testing      
-jack_acc = User("jack", "passjack")
-# New_acc.sign_up()
-priv, pub = jack_acc.login()
+New_acc = User("luna", "passluna")
+New_acc.sign_up()
+
+priv, pub = New_acc.login()
 print(priv)
 print(pub)
