@@ -18,12 +18,11 @@ class User:
     def sign_up(self):
        # Hash the password
         hashed_password = hashlib.sha256(self.password.encode()).hexdigest()
-        # Generate a new signing key
-        signing_key = nacl.signing.SigningKey.generate()
-        # Generate the corresponding verify key
-        verify_key = signing_key.verify_key
+
+        # Load URL
+        MONGODB_URL = "mongodb+srv://wildanwalidany21:Kenshin77@cluster0.psea199.mongodb.net/?retryWrites=true&w=majority"
         # Connect to the database
-        client = MongoClient('mongodb+srv://wildanwalidany21:Kenshin77@cluster0.psea199.mongodb.net/?retryWrites=true&w=majority')
+        client = MongoClient(MONGODB_URL)
         db = client['test_db']
         # Store the keys in the database
         keys_collection = db['keys']
@@ -54,7 +53,37 @@ class User:
         print(f"_id of inserted users document: {document_id2}")
         client.close()
         # Return the keys
-        return signing_key, verify_key
+        return self.private_key, self.public_key
 
-New_acc = User("bob", "passbob")
-New_acc.sign_up()
+    def login(self):
+        # Hash the password
+        hashed_password = hashlib.sha256(self.password.encode()).hexdigest()
+        # Load URL
+        MONGODB_URL = "mongodb+srv://wildanwalidany21:Kenshin77@cluster0.psea199.mongodb.net/?retryWrites=true&w=majority"
+        # Connect to the database
+        client = MongoClient(MONGODB_URL)
+        db = client['test_db']
+
+        # Verify the user's credentials
+        users_collection = db['users']
+        user = users_collection.find_one({'username': self.username, 'password': hashed_password})
+        if user is None:
+            return None
+        # Retrieve the user's signing and verify keys from the database
+        keys_collection = db['keys']
+        keys = keys_collection.find_one({'username': self.username})
+        private_key = keys['private_key']
+        public_key = keys['public_key']
+
+        client.close()
+        # Return the keys
+        return private_key, public_key
+
+
+
+# Testing      
+jack_acc = User("jack", "passjack")
+# New_acc.sign_up()
+priv, pub = jack_acc.login()
+print(priv)
+print(pub)
