@@ -2,8 +2,6 @@ import bson
 from nacl.signing import SigningKey
 from nacl.encoding import Base64Encoder
 
-"======================== KEY GENERATION ================================="
-
 class KeyGenerator:
     def __init__(self):
         # Generate a new random signing key  
@@ -25,12 +23,5 @@ class KeyGenerator:
         self.public_key_binary = bson.binary.Binary(self.public_key_bytes) 
 
     def get_keys(self):
+        # Return binary private and public key
         return self.private_key_binary, self.public_key_binary
-
-# Testing        
-# Create a new KeyGenerator object
-key_generator = KeyGenerator()
-
-# Get the generated private and public keys
-private_key, public_key = key_generator.get_keys()
-print(private_key, public_key)
