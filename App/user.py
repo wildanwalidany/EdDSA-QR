@@ -1,4 +1,3 @@
-import nacl.signing
 from pymongo import MongoClient
 import hashlib
 from key_generator import KeyGenerator
@@ -81,7 +80,7 @@ class User:
 
 
 # Testing      
-New_acc = User("luna", "passluna")
+New_acc = User("jane", "passjane")
 New_acc.sign_up()
 
 priv, pub = New_acc.login()
