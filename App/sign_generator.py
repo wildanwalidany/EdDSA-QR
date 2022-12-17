@@ -17,5 +17,5 @@ class SignGenerator:
         return None
 
     def get_signature(self):
-        # Return the signature
+        # Return the signature in base64 bytes
         return self.signature

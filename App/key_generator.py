@@ -23,5 +23,9 @@ class KeyGenerator:
         self.public_key_binary = bson.binary.Binary(self.public_key_bytes) 
 
     def get_keys(self):
-        # Return binary private and public key
+        # Return bytes private and public key
+        return self.private_key_binary, self.public_key_binary
+
+    def get_binary_keys(self):
+        # Return binary keys
         return self.private_key_binary, self.public_key_binary
