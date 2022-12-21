@@ -1,4 +1,3 @@
-from key_generator import KeyGenerator
 from sign_generator import SignGenerator
 from verifier import Verifier
 from user import User
