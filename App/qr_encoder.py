@@ -1,11 +1,11 @@
 import qrcode
 
-class QRGenerator:
+class QREncode:
     def __init__(self, encoded_signature):
         # Generate a QR code from the encoded signature
         self.qr = qrcode.QRCode(
             version=1,
-            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
             box_size=10,
             border=4,
         )
@@ -13,7 +13,7 @@ class QRGenerator:
         self.qr.make(fit=True)
 
         # Save the QR code as an image
-        self.img = qr.make_image(fill_color="black", back_color="white")
-        self.img.save("signature_qr.png")
+        self.img = self.qr.make_image(fill_color="black", back_color="white")
+        self.img.save("./App/qrcode.png")
 
         return None

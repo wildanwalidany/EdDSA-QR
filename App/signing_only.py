@@ -1,5 +1,4 @@
 from sign_generator import SignGenerator
-from verifier import Verifier
 from user import User
 from json_generator import JsonGEn
 
@@ -18,7 +17,7 @@ def main():
 
     # get the json object in bytes
     identity = new_json.to_json_bytes()
-
+    print('IDENTITY', identity)
 
     '============= SIGNING ============='
     # Create new sign object
@@ -26,25 +25,10 @@ def main():
     signature = new_sign.get_signature()
 
     print('SIGNATURE', signature)
+    print('size in bytes', len(signature))
 
+    
     '============= ENCODE =============' 
-       
-
-
-
-
-
-    '============= VERIFY ============='
-    # GET identity + ignature
-    # Find(identity)
-    # Get(public_key)
-
-    # Create new verify object
-    new_verify = Verifier(public_key, signature)
-    result = new_verify.result()
-    print('RESULT', result)
-
-
 
 
     print("jalan coy")
