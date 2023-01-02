@@ -24,7 +24,7 @@ class KeyGenerator:
 
     def get_keys(self):
         # Return bytes private and public key
-        return self.private_key_binary, self.public_key_binary
+        return self.private_key_bytes, self.public_key_bytes
 
     def get_binary_keys(self):
         # Return binary keys

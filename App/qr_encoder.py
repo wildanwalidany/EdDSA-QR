@@ -4,8 +4,8 @@ class QREncode:
     def __init__(self, encoded_signature):
         # Generate a QR code from the encoded signature
         self.qr = qrcode.QRCode(
-            version=1,
-            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            version=None,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
             box_size=10,
             border=4,
         )

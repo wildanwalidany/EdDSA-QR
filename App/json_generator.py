@@ -1,16 +1,16 @@
 import json
 # importing datetime module for now()
-import datetime
+from datetime import datetime
  
 
 class JsonGEn:
     def __init__(self, name, title, address):
         # using now() to get current time
-        current_time = datetime.datetime.now()
+        current_time = datetime.now()
         self.name = name
         self.title = title
         self.address = address
-        self.timestamp = str(current_time)
+        self.timestamp = str(current_time.strftime("%Y-%m-%d %H:%M:%S"))
 
     def to_json_bytes(self):
         # Convert the object to a dictionary
@@ -22,8 +22,8 @@ class JsonGEn:
         }
         
         # Convert the dictionary to a JSON object
-        json_object = json.dumps(identity_dict)
+        self.json_object = json.dumps(identity_dict)
         
         # Convert the JSON string to bytes
-        json_bytes = bytes(json_object, 'utf-8')
-        return json_bytes
+        self.json_bytes = bytes(self.json_object, 'utf-8')
+        return self.json_bytes
