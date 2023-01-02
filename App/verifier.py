@@ -7,16 +7,12 @@ class Verifier():
         # Create a VerifyKey object from a base64 serialized public key
         self.public_key = VerifyKey(public_key_b64, encoder=Base64Encoder)
 
-        # Decode the signature
-        self.signature_bytes = Base64Encoder.decode(signed_b64.signature)
-
         return None
 
     def result(self):
         try:
             # Check the validity of a message's signature
-            self.public_key.verify(self.encoded_signature.message, self.signature_bytes,
-                        encoder=Base64Encoder)
+            self.public_key.verify(self.encoded_signature, encoder=Base64Encoder)
             print("Signature valid")
             return True
         except:
