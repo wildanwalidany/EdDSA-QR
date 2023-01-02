@@ -6,14 +6,16 @@ from qr_encoder import QREncode
 def main():
     '============= Sign Up, Login ============='
     # Create new user object
-    new_acc = User("grizzly", "pass_grizzly")
+    name = "grizzly"
+    pswd = "pass_grizzly"
+    new_acc = User(name, pswd)
     # new_acc.sign_up()
 
     private_key, public_key = new_acc.login()
     print("PRIVATE", private_key, "PUBLIC", public_key)
 
     '============= Identity ============='
-    new_json = JsonGEn('wildan dharma walidaniy', 'pengesahan proposal PA', 'jane foster')
+    new_json = JsonGEn(name, 'pengesahan proposal PA', 'jane foster')
     identity = new_json.to_json_bytes()
     print('IDENTITY', identity)
     
@@ -28,7 +30,6 @@ def main():
     print('len',len(signed_message.signature))
     print('SIGNED MESSAGE', signed_message)
     print('len', len(signed_message))
-    print(type(signed_message))
     
     '============= ENCODE =============' 
     new_qr = QREncode(signed_message)
