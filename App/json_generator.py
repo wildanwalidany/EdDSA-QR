@@ -3,7 +3,7 @@ import json
 from datetime import datetime
  
 
-class JsonGEn:
+class JsonGen:
     def __init__(self, name, title, address):
         # using now() to get current time
         current_time = datetime.now()
@@ -26,4 +26,5 @@ class JsonGEn:
         
         # Convert the JSON string to bytes
         self.json_bytes = bytes(self.json_object, 'utf-8')
+        
         return self.json_bytes

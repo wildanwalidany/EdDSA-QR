@@ -12,10 +12,10 @@ class SignGenerator:
         self.private_key = SigningKey(self.private_key_bytes)
 
         # Sign a message with the signing key and encode into base64                              
-        self.signature = self.private_key.sign(message, encoder=Base64Encoder)
+        self.signed = self.private_key.sign(message, encoder=Base64Encoder)
 
         return None
 
-    def get_signature(self):
+    def get_signed(self):
         # Return the signature in base64 bytes
-        return self.signature
+        return self.signed
