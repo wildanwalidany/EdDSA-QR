@@ -45,7 +45,7 @@ def main():
     result = new_verify.result()
     print('RESULT', result)
 
-    print("ᨐᵉᵒʷ")
+    print("✅✅✅")
     
 if __name__ == "__main__":
     main()
