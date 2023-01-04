@@ -1,11 +1,10 @@
-from sign_generator import SignGenerator
-from verifier import Verifier
-from user import User
-from json_generator import JsonGEn
-from qr_reader import Reader
-from nacl.encoding import Base64Encoder
 import json
+
 from key_finder import Finder
+from nacl.encoding import Base64Encoder
+from qr_reader import Reader
+from verifier import Verifier
+
 
 def main():
 
@@ -13,6 +12,7 @@ def main():
     # Read QR Code
     new_read = Reader()
     data = new_read.read()
+    print('data read', data)
 
     # Decode the signed message
     signed_bytes = Base64Encoder.decode(data)
@@ -30,14 +30,14 @@ def main():
     # Access the "name" field
     name = json_obj["name"]
 
-    print(name) 
+    print('name', name) 
 
     # Find(identity)
     new_find = Finder(name)
 
     # Get(public_key)
     public_key = new_find.find()
-    print(public_key)
+    print('public_key', public_key)
 
     # Create new verify object
     
