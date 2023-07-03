@@ -35,7 +35,7 @@ def main():
     '============= ENCODE =============' 
     new_qr = QREncode(signed_message)
 
-    print("jalan coy ✅✅✅")
+    print("success ✅✅✅")
     
 if __name__ == "__main__":
     main()
