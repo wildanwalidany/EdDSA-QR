@@ -1,0 +1,12 @@
+curl --request POST \
+  'https://data.mongodb-api.com/app/data-zsndf/endpoint/data/v1/action/findOne' \
+  --header 'Content-Type: application/json' \
+  --header 'api-key: ypro1mFVmKud6ljAdy9iwV4CgWbF3GDevpvn5GwRtICndEQSSOvgprjdxa3nTa7L' \
+  --data-raw '{
+      "dataSource": "Cluster0",
+      "database": "API",
+      "collection": "book",
+      "projection": {
+        "_id": 1
+        }
+  }'
