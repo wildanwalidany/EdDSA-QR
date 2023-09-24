@@ -1,3 +1,7 @@
+.venv
 API/__pycache__
 App/__pycache__
 App/qrcode.png
+Performance Test
+Mongo_Template
+GUI
