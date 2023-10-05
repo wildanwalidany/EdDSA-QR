@@ -7,6 +7,8 @@ class Reader:
         self.data = None
 
     def read(self):
+        print("Scanning for QR codes...")
+
         while True:
             ret, frame = self.cap.read()  # Read a frame from the camera
             if not ret:
@@ -30,4 +32,4 @@ if __name__ == "__main__":
     if qr_data is not None:
         print("QR Code Data:", qr_data)
     else:
-        print("QR code reading failed.")
+        print("No QR code found.")
