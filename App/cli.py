@@ -1,5 +1,5 @@
 import argparse
-from App import User, Reader  # Import relevant project classes/functions
+from user import User  # Import relevant project classes/functions
 
 def create_parser():
     parser = argparse.ArgumentParser(description="Enhancing Document Authenticity with QR Codes and EdDSA Digital Signatures")
@@ -17,14 +17,14 @@ def create_parser():
 
 def register_user(username, password):
     # Implement user registration logic here
-    # Example: user = User(username, password)
-    #          private_key, public_key = user.sign_up()
+    user = User(username, password)
+    private_key, public_key = user.sign_up()
     pass
 
 def login_user(username, password):
     # Implement user login logic here
-    # Example: user = User(username, password)
-    #          private_key, public_key = user.login()
+    user = User(username, password)
+    private_key, public_key = user.login()
     pass
 
 def scan_qr_code():
@@ -32,3 +32,21 @@ def scan_qr_code():
     # Example: qr_reader = Reader()
     #          qr_data = qr_reader.read()
     pass
+
+def main():
+    parser = create_parser()
+    args = parser.parse_args()
+
+    if args.register:
+        username, password = args.register
+        register_user(username, password)
+    elif args.login:
+        username, password = args.login
+        login_user(username, password)
+    elif args.scan_qr:
+        scan_qr_code()
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
